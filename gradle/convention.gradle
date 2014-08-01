@@ -1,0 +1,10 @@
+apply plugin: 'java' // Plugin as major conventions, overwrites status
+
+sourceCompatibility = 1.7
+
+// Generate wrapper, which is distributed as part of source to alleviate the need of installing gradle
+task createWrapper(type: Wrapper) {
+    gradleVersion = '2.0'
+}
+
+status = project.hasProperty('preferredStatus')?project.preferredStatus:(version.contains('SNAPSHOT')?'snapshot':'release')
